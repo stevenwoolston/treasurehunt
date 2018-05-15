@@ -1,0 +1,63 @@
+body {
+    font-size: 18pt;
+    background-image: url("../img/egg-bg.png");
+    background-repeat: repeat;
+}
+
+#slides .slide-body {
+    height: 100vh;
+}
+
+.slide-content {
+    height: 90vh;
+    overflow-y: auto;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.slide-img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.slide-body p {
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.3em;
+    background-color: rgba(255,255,255,0.8);
+    width: 70%;
+    border: 2px solid #ff7fdd;
+}
+
+button#begin {
+    position: absolute;
+    bottom: 10px;
+    background-color: #ff7fdd;
+    border-width: 0;
+    color: #fff;
+}
+
+.modal .modal-footer {
+    text-align: center;
+}
+
+.modal .modal-footer .btn, .btn-navigate-left {
+    background-color: #ff7fdd;
+    border-width: 0;
+    color: #fff;
+}
+
+.modal-open .stopwatch {
+    text-align: center;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: #ff7fdd;
+    font-size: 2em;
+}
