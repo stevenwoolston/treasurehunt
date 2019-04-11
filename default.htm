@@ -87,8 +87,8 @@
         };
 
         function getWP_Data() {
-            var $wpURL = "https://www.woolston.com.au/wp-json/wp/v2/easter?_embed&";
-            $wpURL += "orderby=title&order=asc&per_page=20";
+            var categoryId = 2,
+                $wpURL = `https://hunt.woolston.com.au/wp-json/wp/v2/posts?_embed&categories=${categoryId}&orderby=title&order=asc&per_page=20`;
 
             $.ajax({
                 type: 'GET',
@@ -117,6 +117,7 @@
             });
 
         }
+        
     </script>
   </body>
 </html>
