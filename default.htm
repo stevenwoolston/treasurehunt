@@ -21,9 +21,9 @@
   </head>
   <body>
 
-    <button class="hidden btn btn-default btn-navigate-left"><span class="glyphicon glyphicon-arrow-left"></span>Back</button>
+    <button class="hidden btn btn-navigate-left"><span class="glyphicon glyphicon-arrow-left"></span>Back</button>
     <div id="slides"></div>
-    <button id="begin" class="btn btn-success col-xs-4 col-xs-offset-4" data-toggle="modal" data-target=".stopwatch-modal">Go!</button>
+    <button id="begin" class="btn col-xs-4 col-xs-offset-4" data-toggle="modal" data-target=".stopwatch-modal">Go!</button>
 
     <!-- Modal -->
     <div class="stopwatch-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -33,7 +33,7 @@
             <h1 class="stopwatch"><time>00:00:00</time></h1>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success stop-timer clear-timer text-center" data-dismiss="modal">Found Them!</button>
+            <button type="button" class="btn stop-timer clear-timer text-center" data-dismiss="modal">Found Them!</button>
         </div>
         </div>
     </div>
@@ -75,10 +75,14 @@
 
             if (slideId > 1) {
                 $(".btn-navigate-left").removeClass("hidden");
+            } else {
+                $(".btn-navigate-left").addClass("hidden");
             };
 
             if (slideId == totalSlides) {
                 $("#begin").addClass("hidden");
+            } else {
+                $("#begin").removeClass("hidden");
             };
 
             $(".slide-body").addClass("hidden");
@@ -101,13 +105,12 @@
                         var title = item.title.rendered;
                         var content = item.content.rendered;
                         var featured_img = item._embedded["wp:featuredmedia"][0].source_url;
-                        
-                        var $slide_body = $("<div id='slide" + (index + 1) + "' class='slide-body hidden'></div>");
+                        console.log(featured_img);
+                        var $slide_body = "<div id='slide" + (index + 1) + "' class='slide-body hidden' ";
+                        $slide_body += "style='background-image:url(" + featured_img + ");'>";
+                        $slide_body += "<div class='slide-content'>" + content + "</div>";
+                        $slide_body += "</div>";
 
-                        var html = "<div class='slide-img' style='background-image:url(" + featured_img + ");'></div>";
-                        html += "<div class='slide-content'>" + content + "</div>";
-
-                        $slide_body.html(html);
                         $("#slides").append($slide_body);
                     });
 
