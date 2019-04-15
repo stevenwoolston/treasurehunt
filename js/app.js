@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register('./service-worker.js')
+    .then(function() { console.log('Service Worker Registered'); });
+}
+
 $(".stopwatch-modal").on("shown.bs.modal", function() {
     startTimer();
 });
