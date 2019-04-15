@@ -5,9 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="pragma" content="no-cache" />
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon//apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <title>From The Easter Bunny</title>
 
-    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/easter.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
@@ -27,16 +45,16 @@
 
     <!-- Modal -->
     <div class="stopwatch-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-body">
-            <h1 class="stopwatch"><time>00:00:00</time></h1>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="stopwatch"><time>00:00:00</time></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn stop-timer clear-timer text-center" data-dismiss="modal">Found Them!</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn stop-timer clear-timer text-center" data-dismiss="modal">Found Them!</button>
-        </div>
-        </div>
-    </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -44,6 +62,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/stopwatch.js"></script> 
+    <script src="js/app.js"></script> 
     <script>
         var totalSlides;
         var currentSlide;
@@ -52,74 +71,7 @@
 
             getWP_Data();
 
-            $(".stopwatch-modal").on("shown.bs.modal", function() {
-                startTimer();
-            });
-
-            $(".stopwatch-modal").on("hide.bs.modal", function() {
-                stopTimer();
-            });
-
-            $(".modal-footer .btn").on("click", function() {
-                currentSlide++;
-                navigateSlide(currentSlide);
-            });
-
-            $(".btn-navigate-left").on("click", function() {
-                currentSlide--;
-                navigateSlide(currentSlide);
-            })
         });
-
-        function navigateSlide(slideId) {
-
-            if (slideId > 1) {
-                $(".btn-navigate-left").removeClass("hidden");
-            } else {
-                $(".btn-navigate-left").addClass("hidden");
-            };
-
-            if (slideId == totalSlides) {
-                $("#begin").addClass("hidden");
-            } else {
-                $("#begin").removeClass("hidden");
-            };
-
-            $(".slide-body").addClass("hidden");
-            $("#slide" + slideId).removeClass("hidden");
-            currentSlide = slideId;
-        };
-
-        function getWP_Data() {
-            var categoryId = 2,
-                $wpURL = `https://hunt.woolston.com.au/wp-json/wp/v2/posts?_embed&categories=${categoryId}&orderby=title&order=asc&per_page=20`;
-
-            $.ajax({
-                type: 'GET',
-                url: $wpURL,
-                success: function(data, textStatus, request) {
-                    totalSlides = data.length;
-
-                    $.each(data, function(index, value){
-                        var item = data[index];
-                        var title = item.title.rendered;
-                        var content = item.content.rendered;
-                        var featured_img = item._embedded["wp:featuredmedia"][0].source_url;
-                        console.log(featured_img);
-                        var $slide_body = "<div id='slide" + (index + 1) + "' class='slide-body hidden' ";
-                        $slide_body += "style='background-image:url(" + featured_img + ");'>";
-                        $slide_body += "<div class='slide-content'>" + content + "</div>";
-                        $slide_body += "</div>";
-
-                        $("#slides").append($slide_body);
-                    });
-
-                    currentSlide = 1;
-                    navigateSlide(currentSlide);
-                }
-            });
-
-        }
         
     </script>
   </body>
