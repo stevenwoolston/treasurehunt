@@ -24,6 +24,8 @@ $(".btn-navigate-left").on("click", function() {
 
 function navigateSlide(slideId) {
 
+    toggleLoader(true);
+
     if (slideId > 1) {
         $(".btn-navigate-left").removeClass("hidden");
     } else {
@@ -39,11 +41,14 @@ function navigateSlide(slideId) {
     $(".slide-body").addClass("hidden");
     $("#slide" + slideId).removeClass("hidden");
     currentSlide = slideId;
+
+    toggleLoader(false);
+
 };
 
 function getWP_Data() {
     var categoryId = 2,
-        $wpURL = `https://hunt.woolston.com.au/wp-json/wp/v2/posts?_embed&categories=${categoryId}&orderby=title&order=asc&per_page=20`;
+        $wpURL = `https://treasurehunt.woolston.com.au/wp-json/wp/v2/posts?_embed&categories=${categoryId}&orderby=title&order=asc&per_page=20`;
 
     $.ajax({
         type: 'GET',
@@ -67,7 +72,17 @@ function getWP_Data() {
 
             currentSlide = 1;
             navigateSlide(currentSlide);
+            toggleLoader(false);
         }
     });
 
+}
+
+function toggleLoader(enable) {
+    if (enable) {
+        $(".loader").removeClass("hidden");
+        return;
+    }
+
+    $(".loader").addClass("hidden");
 }
