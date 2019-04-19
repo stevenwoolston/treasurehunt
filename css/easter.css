@@ -1,7 +1,8 @@
 body {
 	font-size: 18pt;
-	background-image: url("../img/egg-bg.png");
-	background-repeat: repeat;
+	background: url("../img/welcome-image.jpg") center top;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .btn-navigate-left {
@@ -16,7 +17,7 @@ body {
 	right: 10px;
 }
 
-.btn-navigate-left .glyphicon {
+.btn-navigate-left .glyphicon, .btn-add-pwa .glyphicon {
 	margin-right: 10px;
 }
 

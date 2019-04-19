@@ -11,7 +11,7 @@ var filesToCache = [
     "fonts/glyphicons-halflings-regular.ttf",
     "fonts/glyphicons-halflings-regular.woff",
     "fonts/glyphicons-halflings-regular.woff2",
-    "img/egg-bg.png",
+    "img/welcome-image.jpg",
     "img/favicon/android-icon-144x144.png",
     "img/favicon/android-icon-192x192.png",
     "img/favicon/android-icon-36x36.png",

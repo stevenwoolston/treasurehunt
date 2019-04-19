@@ -1,13 +1,4 @@
 
-$("#begin").on("click", function (e) {
-    if (currentSlide == 1) {
-        e.preventDefault();
-        currentSlide++;
-        navigateSlide(currentSlide);
-        return false;
-    }
-});
-
 $(".stopwatch-modal").on("shown.bs.modal", function () {
     startTimer();
 });
@@ -57,6 +48,10 @@ function getWP_Data() {
         url: $wpURL,
         success: function (data, textStatus, request) {
             totalSlides = data.length;
+            if (totalSlides == 0) {
+                toggleLoader(false);
+                return true;
+            }
 
             $.each(data, function (index, value) {
                 var item = data[index];
@@ -76,6 +71,7 @@ function getWP_Data() {
             currentSlide = 1;
             navigateSlide(currentSlide);
             toggleLoader(false);
+            $("#begin").removeClass("hidden");
         }
     });
 }
