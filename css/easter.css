@@ -1,6 +1,6 @@
 body {
 	font-size: 18pt;
-	background: url("../img/welcome-image.jpg") center top;
+	background: url("../img/welcome-image.jpg") center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
