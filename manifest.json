@@ -1,0 +1,21 @@
+{
+    "short_name": "Hunt",
+    "name": "Treasure Hunt",
+    "start_url": "index.html",
+    "scope": "/treasurehunt/",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "img/icons-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "img/icons-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
