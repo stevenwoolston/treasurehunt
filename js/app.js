@@ -17,6 +17,12 @@ $(".btn-navigate-left").on("click", function () {
     navigateSlide(currentSlide);
 });
 
+$(".btn-show-clue").on("click", function(){
+    $("#begin").removeClass("hidden");
+    $(".slide-content").removeClass("hidden");
+    $(this).addClass("hidden");
+});
+
 function navigateSlide(slideId) {
     toggleLoader(true);
 
@@ -26,14 +32,18 @@ function navigateSlide(slideId) {
         $(".btn-navigate-left").addClass("hidden");
     }
 
+    $(".slide-body").addClass("hidden");
+    $(".slide-body .slide-content").addClass("hidden");
+    $("#slide" + slideId).removeClass("hidden");
+
     if (slideId == totalSlides) {
         $("#begin").addClass("hidden");
+        $(".slide-body .slide-content").removeClass("hidden");
     } else {
-        $("#begin").removeClass("hidden");
+        $(".btn-show-clue").removeClass("hidden");
+        $("#begin").addClass("hidden");
     }
 
-    $(".slide-body").addClass("hidden");
-    $("#slide" + slideId).removeClass("hidden");
     currentSlide = slideId;
 
     toggleLoader(false);
@@ -60,10 +70,10 @@ function getWP_Data() {
                 var featured_img = item._embedded["wp:featuredmedia"][0].source_url;
                 console.log(featured_img);
                 var $slide_body =
-                    "<div id='slide" + (index + 1) + "' class='slide-body hidden' ";
-                $slide_body += "style='background-image:url(" + featured_img + ");'>";
-                $slide_body += "<div class='slide-content'>" + content + "</div>";
-                $slide_body += "</div>";
+                    `<div id="slide${index + 1}" class="slide-body hidden"
+                        style="background-image:url(${featured_img});">
+                        <div class="hidden slide-content">${ content }</div>
+                    </div>`;
 
                 $("#slides").append($slide_body);
             });
@@ -71,7 +81,8 @@ function getWP_Data() {
             currentSlide = 1;
             navigateSlide(currentSlide);
             toggleLoader(false);
-            $("#begin").removeClass("hidden");
+            $(".btn-show-clue").removeClass("hidden");
+            $("#begin").addClass("hidden");
         }
     });
 }
