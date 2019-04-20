@@ -1,4 +1,5 @@
 
+var currentSlide = 1;
 $(".stopwatch-modal").on("shown.bs.modal", function () {
     startTimer();
 });
@@ -19,7 +20,7 @@ $(".btn-navigate-left").on("click", function () {
 
 $(".btn-show-clue").on("click", function(){
     $("#begin").removeClass("hidden");
-    $(".slide-content").removeClass("hidden");
+    $(".slide-content").addClass("fadeIn");
     $(this).addClass("hidden");
 });
 
@@ -33,12 +34,11 @@ function navigateSlide(slideId) {
     }
 
     $(".slide-body").addClass("hidden");
-    $(".slide-body .slide-content").addClass("hidden");
+    $(".slide-body .slide-content").removeClass("fadeIn");
     $("#slide" + slideId).removeClass("hidden");
 
     if (slideId == totalSlides) {
         $("#begin").addClass("hidden");
-        $(".slide-body .slide-content").removeClass("hidden");
     } else {
         $(".btn-show-clue").removeClass("hidden");
         $("#begin").addClass("hidden");
@@ -72,13 +72,12 @@ function getWP_Data() {
                 var $slide_body =
                     `<div id="slide${index + 1}" class="slide-body hidden"
                         style="background-image:url(${featured_img});">
-                        <div class="hidden slide-content">${ content }</div>
+                        <div class="slide-content">${ content }</div>
                     </div>`;
 
                 $("#slides").append($slide_body);
             });
 
-            currentSlide = 1;
             navigateSlide(currentSlide);
             toggleLoader(false);
             $(".btn-show-clue").removeClass("hidden");
