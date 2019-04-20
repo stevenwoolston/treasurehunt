@@ -62,7 +62,7 @@ body {
 
 button#begin {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 }
 
 .modal .modal-footer {
