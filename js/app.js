@@ -67,7 +67,7 @@ function getWP_Data() {
                 var item = data[index];
                 var title = item.title.rendered;
                 var content = item.content.rendered;
-                var featured_img = item._embedded["wp:featuredmedia"][0].source_url;
+                var featured_img = `${item._embedded["wp:featuredmedia"][0].source_url}?v=8`;
                 console.log(featured_img);
                 var $slide_body =
                     `<div id="slide${index + 1}" class="slide-body hidden"

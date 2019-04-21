@@ -9,6 +9,7 @@ body {
 	position: absolute;
 	top: 10px;
 	left: 10px;
+	z-index: 1;
 }
 
 .btn-show-clue {
@@ -62,7 +63,7 @@ body {
 
 button#begin {
 	position: absolute;
-	bottom: 0;
+	bottom: -10px;
 }
 
 .modal .modal-footer {
