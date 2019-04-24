@@ -33,7 +33,7 @@ body {
 .slide-content {
 	opacity: 0;
 	transition: opacity 3s;
-	height: 95vh;
+	height: 90vh;
 	overflow-y: auto;
 	width: 100vw;
 	margin: 0 auto;
@@ -63,7 +63,7 @@ body {
 
 button#begin {
 	position: absolute;
-	bottom: -10px;
+	bottom: 10px;
 }
 
 .modal .modal-footer {
